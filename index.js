@@ -57,11 +57,7 @@ function openURL(command, url, callback) {
 
 function open(url, callback) {
     getCommand().then(cmd => {
-        return openURL(cmd, url, (err) => {
-            if(~cmd.indexOf('Chrome')) {
-                spawnSync('open', ['-a', cmd])
-            }
-        })
+        return openURL(cmd, url, callback)
     })
 }
 
