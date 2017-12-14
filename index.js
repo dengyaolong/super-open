@@ -1,6 +1,6 @@
 const defaultBrowser = require('default-browser');
 const fs = require('fs')
-const spawn = require('child_process').spawn;
+const {spawn, spawnSync} = require('child_process');
 
 const openUrl = require('openurl')
 const chromePath = require('@moonandyou/chrome-path');
@@ -61,7 +61,11 @@ function openURL(command, url, callback) {
 
 function open(url, callback) {
     getCommand().then(cmd => {
-        return openURL(cmd, url, callback)
+        return openURL(cmd, url, (err) => {
+            if(~cmd.indexOf('Chrome')) {
+                spawnSync('open', ['-a', cmd])
+            }
+        })
     })
 }
 
