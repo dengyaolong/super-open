@@ -24,8 +24,6 @@ function getCommand() {
     }
     return defaultBrowser()
         .then(browser => {
-            console.log(browser);
-            //
             if(browser.name.toUpperCase() === 'CHROME') {
                 if(fs.existsSync(defaultChromePath)) {
                     return defaultChromePath
