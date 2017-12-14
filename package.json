@@ -19,7 +19,6 @@
   "homepage": "https://github.com/dengyaolong/super-open#readme",
   "dependencies": {
     "@moonandyou/chrome-path": "^0.2.1",
-    "default-browser": "^2.0.1",
-    "openurl": "^1.1.1"
+    "default-browser": "^2.0.1"
   }
 }

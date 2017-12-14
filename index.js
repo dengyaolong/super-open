@@ -1,8 +1,6 @@
 const defaultBrowser = require('default-browser');
 const fs = require('fs')
 const {spawn, spawnSync} = require('child_process');
-
-const openUrl = require('openurl')
 const chromePath = require('@moonandyou/chrome-path');
 
 const defaultChromePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
