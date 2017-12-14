@@ -55,7 +55,9 @@ function openURL(command, url, callback) {
 function open(url, callback) {
     getCommand().then(cmd => {
         return openURL(cmd, url, (err) => {
-            spawn('osascript', ['-e activate application "Google Chrome"'])
+            if(~cmd.indexOf('Chrome')) {
+                spawn('osascript', ['-e activate application "Google Chrome"'])
+            }
             callback && callback(err)
         })
     })
