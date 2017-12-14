@@ -42,14 +42,11 @@ function openURL(command, url, callback) {
         errorText += data;
     });
     child.stderr.on('end', function () {
+        if(!callback) return
         if (errorText.length > 0) {
             var error = new Error(errorText);
-            if (callback) {
-                callback(error);
-            } else {
-                throw error;
-            }
-        } else if (callback) {
+            callback(error);
+        } else {
             callback(null);
         }
     });
@@ -57,7 +54,10 @@ function openURL(command, url, callback) {
 
 function open(url, callback) {
     getCommand().then(cmd => {
-        return openURL(cmd, url, callback)
+        return openURL(cmd, url, (err) => {
+            spawn('osascript', ['-e activate application "Google Chrome"'])
+            callback && callback(err)
+        })
     })
 }
 
