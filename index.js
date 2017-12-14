@@ -64,3 +64,5 @@ function open(url, callback) {
         return openURL(cmd, url, callback)
     })
 }
+
+module.exports = open
